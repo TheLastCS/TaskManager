@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Task Manager";
+}
+
+<div id="services" class="services section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="section-heading wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="1s">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert-danger popupBody">
+                            @TempData["Error"]
+                        </div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert-success popupBody">
+                            @TempData["Success"]
+                        </div>
+                    }
+                    @if (TempData["Info"] != null)
+                    {
+                        <div class="alert-info popupBody">
+                            @TempData["Info"]
+                        </div>
+                    }
+                    <h4 style="font-size:8rem;">Task <em>Manager</em> <i class="fa fa-tasks"></i></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="service-item first-service wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="icon"></div>
+                    <h4>Task Management</h4>
+                    <p>Easily manage your day to day tasks with a click of a button. Start your Task List now!</p>
+                    <div class="text-button">
+                        @Html.ActionLink("Task Manager", "Login", "Login") <a><i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="service-item second-service wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="icon"></div>
+                    <h4>Rocket Speed of App</h4>
+                    <p>With Task Manager, you're able to make your to do list with blazing speed.</p>
+                    <div class="text-button">
+                        @Html.ActionLink("Create Task", "Login", "Login") <a><i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="service-item third-service wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="icon"></div>
+                    <h4>Deadlines and Descriptions</h4>
+                    <p>Created Tasks are provided with descriptions and deadlines for an even better user experience. </p>
+                    <div class="text-button">
+                        @Html.ActionLink("Read More", "About", "Home") <a><i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="service-item fourth-service wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="icon"></div>
+                    <h4>Contact Us</h4>
+                    <p>For more information or any inquiries, feel free to contact us through our provided details!</p>
+                    <div class="text-button">
+                        @Html.ActionLink("Contact Us", "Contact", "Home") <a><i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" type="image/ico" href="~/Content/assets/images/icon2.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/assets/css/templatemo-chain-app-dev.css")
+    @Styles.Render("~/Content/assets/css/animated.css")
+    @Styles.Render("~/Content/assets/css/owl.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- ***** Loading Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Loading End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a class="logo">
+                            <img src="~/Content/assets/images/icon2.png" alt="Task Manager" style="height:70px;">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            @*<li>@Html.ActionLink("Tasks", "Tasks", "Task")</li>
+                                <li>@Html.ActionLink("Users", "Users", "User")</li>*@
+                            <li></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    @RenderBody()
+
+    <!-- ***** Footer Start ***** -->
+    <footer id="newsletter">
+        <div class="container">
+            <div class="row wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading">
+                        <h4>Join our mailing list to receive the news</h4>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-3">
+                    <form id="search" action="/Home/NewsLetter_Action" method="post">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <fieldset>
+                                    <input type="email" name="Email" class="email" placeholder="Email Address..." autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <fieldset>
+                                    @Html.AntiForgeryToken()<button type="submit" class="main-button">Subscribe Now<i class="fa fa-angle-right"></i></button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="footer-widget">
+                        <h4 style="margin-bottom:-0.2rem;">Contact Us</h4>
+                        <hr style="color:snow;" />
+                        <p>Cebu City, Cebu Philippines</p>
+                        <p><a href="mailto: christianstewart5111@gmail.com">CStewart@TheLast</a></p>
+                        <p><a href="https://discord.com/">Join Our Discord!</a></p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="footer-widget">
+                        <h4 style="margin-bottom:-0.2rem;">About Us</h4>
+                        <hr style="color:snow;" />
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                        <ul>
+                            <li>@Html.ActionLink("Tasks", "Index", "Login")</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="footer-widget">
+                        <h4 style="margin-bottom:-0.2rem;">Useful Links</h4>
+                        <hr style="color:snow;" />
+                        <ul>
+                            <li><a href="https://visualstudio.microsoft.com/">App Engine</a></li>
+                            <li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/">Programming</a></li>
+                            <li><a href="https://dotnet.microsoft.com/apps/aspnet">Development</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="footer-widget">
+                        <h4 style="margin-bottom:-0.2rem;">About Our Company</h4>
+                        <hr style="color:snow;" />
+                        <div class="logo">
+                            <img src="~/Content/assets/images/icon.png" alt="Task Manager" style="height:5%;">
+                        </div>
+                        <p>The Last Inc. aims to provide user-friendly web-based applications that simplifies user experience. Task Manager, is one of many applications created for such purpose.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="copyright-text">
+                        <p>
+                            Copyright © 2022 TheLast. All Rights Reserved.
+                            <br>Design: Christian Stewart
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ***** Footer End ***** -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/vendor/jquery/jquery.min.js")
+    @Scripts.Render("~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    @Scripts.Render("~/Content/assets/js/owl-carousel.js")
+    @Scripts.Render("~/Content/assets/js/animation.js")
+    @Scripts.Render("~/Content/assets/js/imagesloaded.js")
+    @Scripts.Render("~/Content/assets/js/popup.js")
+    @Scripts.Render("~/Content/assets/js/custom.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

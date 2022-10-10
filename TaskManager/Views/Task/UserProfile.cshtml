@@ -1,0 +1,44 @@
+﻿@model TaskManager.Models.User
+@{
+    ViewBag.Title = "User Profile";
+    Layout = "~/Views/Shared/TaskView.cshtml";
+}
+
+<div id="pricing" class="pricing-tables">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 offset-lg-2 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                <div class="section-heading" style="margin-right:14.5rem;">
+                    <h1 style="color:Background;">User Profile</h1>
+                    <img src="~/Content/assets/images/heading-line-dec.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                <div class="pricing-item-pro" style="background: #ffffff; box-shadow: 18px 18px 17px #d9d9d9; margin-bottom:2rem;">
+                    <span class="price">#@Html.DisplayFor(model => model.UserID)</span>
+                    <h4> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+                    <div class="icon">
+                        <img src="~/Content/assets/images/user-icon.png" alt="" style="border-radius:1.5rem;">
+                    </div>
+                    <ul>
+                        <shadow><h5>@Html.DisplayFor(model => model.Email)</h5></shadow>
+                        <li>@Html.DisplayFor(model => model.UserType)</li>
+                    </ul>
+                    <div class="border-button">
+                        @Html.ActionLink("Edit", "EditUser", new { id = Session["UserID"] })
+                        @if (Session["UserType"].ToString().Contains("Admin"))
+                        {
+                            @Html.ActionLink("Back", "AdminTasks")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Back", "UserTasks")
+                        }
+                    </div>
+                    <div style="padding-bottom:4rem;"></div>
+                </div>
+            </div>
+            <br /><br /><br /><br />
+        </div>
+    </div>
+</div>

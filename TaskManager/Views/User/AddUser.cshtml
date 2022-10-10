@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Add User";
+    Layout = "~/Views/Shared/UserView.cshtml";
+}
+
+<div id="Add_Task" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <h1 style="color:Background;">Create User</h1>
+        <div class="row">
+            <div class="container text-center">
+                <form action="EditUser_Action" method="post">
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <td><label for="First Name">First Name</label></td>
+                            <td><input type="text" name="FirstName" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Last Name">Last Name</label></td>
+                            <td><input type="text" name="LastName" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Email">Email</label></td>
+                            <td><input type="email" name="Email" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Password">Password</label></td>
+                            <td><input type="password" name="Password" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="UserType">User Type</label></td>
+                            <td><input type="text" name="UserType" required /></td>
+                        </tr>
+                    </table>
+                    <div class="flex-column">
+                        @Html.AntiForgeryToken()<button type="submit" class="btn btn-outline-light rounded-pill btn-lg" name="submitBtn">Update User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

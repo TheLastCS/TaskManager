@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LoginView.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<!-- Social Login -->
+<br /><br /><br /><br />
+<div id="pricing" class="services">
+    <div class="container">
+        <div class="row justify-content-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="col-lg-5">
+                <div class="pricing-item-pro">
+                    <br /> <br />
+                    <div class="social_login">
+                        <div>
+                            <a href="#" class="social_box fb">
+                                <span class="icon"><i class="fab fa-facebook"></i></span>
+                                <span class="icon_title">Connect with Facebook <code>(beta)</code></span>
+
+                            </a>
+
+                            <a href="#" class="social_box google">
+                                <span class="icon"><i class="fab fa-google-plus"></i></span>
+                                <span class="icon_title">Connect with Google <code>(beta)</code></span>
+                            </a>
+                        </div>
+
+                        <div class="centeredText">
+                            <span>Or use your Email address</span>
+                        </div>
+
+                        <div class="action_btns">
+                            <div class="one_half"><div class="gradient-button">@Html.ActionLink("Login", "Login", "Login")</div></div>
+                            <div class="one_half last"><div class="gradient-button">@Html.ActionLink("Register", "SignUp", "Login")</div></div>
+                        </div>
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

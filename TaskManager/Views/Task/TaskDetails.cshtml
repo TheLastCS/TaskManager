@@ -1,0 +1,75 @@
+﻿@model TaskManager.Models.Task
+
+@{
+    ViewBag.Title = "Task Details";
+    Layout = "~/Views/Shared/TaskView.cshtml";
+}
+
+<div id="Task_Table" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <div class="row">
+            <div class="bg-gradient">
+                <h1 style="color:Background;">Task Details</h1>
+            </div>
+            <div>
+                <h4>Task @Html.DisplayFor(model => model.TaskID)</h4>
+                <hr />
+                <table class="table table-responsive table-hover" id="task_table" style="border-radius: 20px; background: #ffffff; box-shadow: 18px 18px 17px #d9d9d9, -18px -18px 17px #ffffff; ">
+                    <thead>
+                        <tr>
+                            <td>
+                                <strong>User ID</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.UserID)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Name)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Description)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Description)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Deadline)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Deadline)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Status)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Status)
+                            </td>
+                        <tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="border-button">
+                @Html.ActionLink("Edit", "EditTask", new { id = Model.TaskID })
+                @if (Session["UserType"].ToString().Contains("Admin"))
+                {
+                    @Html.ActionLink("Back", "AdminTasks")
+                }
+                else
+                {
+                    @Html.ActionLink("Back", "UserTasks")
+                }
+            </div>
+        </div>
+    </div>
+</div>

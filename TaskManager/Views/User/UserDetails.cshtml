@@ -1,0 +1,76 @@
+﻿@model TaskManager.Models.User
+
+@{
+    ViewBag.Title = "UserDetails";
+    Layout = "~/Views/Shared/UserView.cshtml";
+}
+
+<div id="Task_Table" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <div class="row">
+            <div class="bg-gradient">
+                <h1 style="color:Background;">User Details</h1>
+            </div>
+            <div>
+                <h4>User @Html.DisplayFor(model => model.UserID)</h4>
+                <hr />
+                <table class="table table-responsive table-hover" id="task_table" style="border-radius: 20px; background: #ffffff; box-shadow: 18px 18px 17px #d9d9d9, -18px -18px 17px #ffffff; ">
+                    <thead>
+                        <tr>
+                            <td>
+                                <strong>First Name</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstName)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>Family Name</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.LastName)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Email)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Password)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Password)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.Status)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Status)
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.DisplayNameFor(model => model.UserType)</strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.UserType)
+                            </td>
+                        <tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="border-button">
+                @Html.ActionLink("Edit", "EditUser", new { id = Model.UserID })
+                @Html.ActionLink("Back", "Users")
+            </div>
+        </div>
+    </div>
+</div>

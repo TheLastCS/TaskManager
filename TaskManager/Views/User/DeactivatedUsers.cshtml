@@ -1,0 +1,78 @@
+﻿<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+@model IEnumerable<TaskManager.Models.User>
+@{
+    ViewBag.Title = "Inactive Users";
+    Layout = "~/Views/Shared/UserView.cshtml";
+}
+
+@if (Session["UserID"] != null)
+{
+    var userID = Session["UserID"];
+    var username = Session["UserName"].ToString();
+    var email = Session["UserEmail"].ToString();
+    var usertype = Session["UserType"].ToString();
+    <div id="User_Table" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="bg-gradient">
+                    <h1 style="color:Background;">Deactivated Accounts</h1>
+                </div>
+                <div class="container text-center">
+                    <br /><br />
+                    <table class="table table-responsive table-hover" id="user_table" style="border-radius: 20px; background: #ffffff; box-shadow: 18px 18px 17px #d9d9d9, -18px -18px 17px #ffffff; ">
+                        <thead>
+                            <tr>
+                                <th><label for="FirstName">First Name</label></th>
+                                <th><label for="LastName">Last Name</label></th>
+                                <th><label for="Email">Email</label></th>
+                                <th><label for="Password">Password</label></th>
+                                <th><label for="UserType">User Type</label></th>
+                                <th><label for="TimeCreated">Time Created</label></th>
+                                <th><label for="Actions">Actions</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if(item.Status.Contains("Deleted"))
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(user => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(user => item.LastName)
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            @Html.DisplayFor(user => item.Email)
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(user => item.Password)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(user => item.UserType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(user => item.TimeCreated)
+                                    </td>
+                                    <td>
+                                        <div class="border-button">
+                                            @Html.ActionLink("Activate", "ActivateUser", new { id = item.UserID })
+                                            @*@Html.ActionLink("Edit", "EditUser", new { id = item.UserID })*@
+                                            @Html.ActionLink("Delete", "DeleteUser_Action", new { id = item.UserID })
+                                            <p class="text-danger" style="margin-left:6.5rem;">(permanent)</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

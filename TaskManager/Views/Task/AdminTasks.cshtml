@@ -1,0 +1,106 @@
+﻿<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+@model IEnumerable<TaskManager.Models.Task>
+
+@{
+    ViewBag.Title = "Admin Task";
+    Layout = "~/Views/Shared/TaskView.cshtml";
+}
+
+@if (Session["UserID"] != null)
+{
+    var userID = Session["UserID"];
+    var username = Session["UserName"].ToString();
+    var email = Session["UserEmail"].ToString();
+    var usertype = Session["UserType"].ToString();
+
+
+    <div id="Task_Table" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="bg-gradient">
+                    <h1 style="color:Background;">Task Manager</h1>
+                    <h3>Welcome, @username! (@usertype)</h3>
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert-success popupBody">
+                            @TempData["Success"]
+                        </div>
+                    }@if (TempData["Info"] != null)
+                    {
+                        <div class="alert-info popupBody">
+                            @TempData["Info"]
+                        </div>
+                    }
+                </div>
+                <div class="container text-center">
+                    <br /><br />
+                    <table class="table table-responsive table-hover" id="task_table" style="border-radius: 20px; background: #ffffff; box-shadow: 18px 18px 17px #d9d9d9, -18px -18px 17px #ffffff; ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Task
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Deadline)
+                                </th>
+                                @*<th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>*@
+                                <th>
+                                    User Assigned
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>                            
+                            @foreach (var item in Model)
+                            {
+                                
+                                if (item.Status.Contains("To Be Done"))
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.TaskID
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                @item.Name
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            @item.Description
+                                        </td>
+                                        <td>
+                                            @item.Deadline
+                                        </td>
+                                        @*<td>
+                                            @item.Status
+                                        </td>*@
+                                        <td>
+                                             #@item.UserID - @item.User.FirstName @item.User.LastName
+                                        </td>
+
+                                        <td>
+                                            <div class="border-button">
+                                                @Html.ActionLink("Done", "FinishTask_Action", new { id = item.TaskID })
+                                                @*@Html.ActionLink("Edit", "EditTask", new { id = item.TaskID })*@
+                                                @Html.ActionLink("Details", "TaskDetails", new { id = item.TaskID })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

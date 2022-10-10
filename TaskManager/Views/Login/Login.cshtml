@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LoginView.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<br /><br /><br />
+<div id="pricing" class="services">
+    <div class="container">
+        <div class="row justify-content-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="col-lg-5">
+                <div class="pricing-item-pro">
+                    <br />
+                    <h1>Sign <strong style="color:Background;">In</strong></h1>
+                    <br />
+                    <form action="/Login/SignIn_Action" method="post">
+                        <table class="table table-responsive table-hover">
+
+                            <tr>
+                                <td><label for="Email">Email</label></td>
+                                <td><input type="email" name="Email" required /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Password">Password</label></td>
+                                <td><input type="password" name="Password" required /></td>
+                            </tr>
+
+                        </table>
+                        <div class="action_btns">
+                            <div class="one_half"><div class="gradient-button" style="width: 50%;">@Html.ActionLink("Register", "SignUp", "Login")</div></div>
+                            <div class="one_half last">@Html.AntiForgeryToken()<button type="submit" class="btn btn_red" name="submitBtn">Login <i class="fa fa-angle-double-right"></i></button></div>
+                        </div>
+                        <br />
+                        <div class="client-content">
+                            <p>
+                                “The creation of the web application has its practical uses. It really brings good functionality and efficiency for people who are busy. It helps them manage their tasks well.”
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

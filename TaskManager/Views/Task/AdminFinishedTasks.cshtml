@@ -1,0 +1,115 @@
+﻿<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+@model IEnumerable<TaskManager.Models.Task>
+
+@{
+    ViewBag.Title = "Finished Tasks";
+    Layout = "~/Views/Shared/TaskView.cshtml";
+}
+
+@if (Session["UserID"] != null)
+{
+    var userID = Session["UserID"];
+    var username = Session["UserName"].ToString();
+    var email = Session["UserEmail"].ToString();
+    var usertype = Session["UserType"].ToString();
+
+
+    <div id="Task_Table" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="bg-gradient">
+                    <h1 style="color:Background;">Finished Tasks</h1>
+                </div>
+                <div class="container text-center">
+                    <br /><br />
+                    <table class="table table-responsive table-hover" id="task_table" style="border-radius: 20px; background: #ffffff; box-shadow: 18px 18px 17px #d9d9d9, -18px -18px 17px #ffffff; ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Task
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Deadline)
+                                </th>
+                                @*<th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>*@
+                                <th>
+                                    User Assigned
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Status.Contains("Finished"))
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(task => item.TaskID)
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                @item.Name
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            @item.Description
+                                        </td>
+                                        <td>
+                                            @item.Deadline
+                                        </td>
+                                        @*<td>
+                                                @item.Status
+                                            </td>*@
+                                        <td>
+                                            #@item.UserID - @item.User.FirstName @item.User.LastName
+                                        </td>
+                                        <td>
+
+                                            <div class="border-button">
+                                                @Html.ActionLink("Activate", "ActivateTask_Action", new { id = item.TaskID })
+                                                @*@Html.ActionLink("Edit", "EditTask", new { id = item.TaskID })*@
+                                                @*<a id="modal_trigger" href="#modal" >Delete Beta</a>*@
+                                                @Html.ActionLink("Delete", "RecycleBin", new { id = item.TaskID })
+                                                <p class="text-danger" style="margin-left:6.5rem;">(permanent)</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="modal" class="popupContainer" style="display:none;width:30rem;">
+        <div class="popupHeader">
+            <span class="header_title">Delete Confirmation</span>
+            <span class="modal_close"><i class="fa fa-times"></i></span>
+        </div>
+
+        <section class="popupBody">-->
+            <!-- Social Login -->
+            <!--<div class="social_login">
+                <div class="jumbotron">
+                    <p>Are you sure you want to delete this task?</p>
+                </div>
+
+                <div class="action_btns">
+                    @*@Html.ActionLink("Delete", "RecycleBin", new { id = item.TaskID })*@
+                </div>
+            </div>
+        </section>
+    </div>-->
+}

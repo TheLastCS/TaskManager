@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Add Task";
+    Layout = "~/Views/Shared/TaskView.cshtml";
+}
+
+
+<div id="Add_Task" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <h1 style="color:Background;">Create Task</h1>
+        <div class="row">
+            <div class="container text-center">
+
+                <form action="AddTask_Action" method="post">
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <td><label for="Name">Name</label></td>
+                            <td><input type="text" name="Name" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Description">Description</label></td>
+                            <td><input type="text" name="Description" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Deadline">Deadline</label></td>
+                            <td><input type="datetime-local" name="Deadline" required style="margin-left:3.5rem;" /></td>
+                            <td><input type="text" name="Status" value="To Be Done" hidden /></td>
+                        </tr>
+
+                    </table>
+                    @Html.AntiForgeryToken()
+                    <div class="flex-column left-content">
+                        <button type="submit" class="btn btn-outline-light btn-lg" name="submitBtn">Add Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

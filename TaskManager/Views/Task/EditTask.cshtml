@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Edit Task";
+    Layout = "~/Views/Shared/TaskView.cshtml";
+}
+
+<div id="Add_Task" class="pricing-tables wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <h1 style="color:Background;">Update Task</h1>
+        <div class="row">
+            <div class="container text-center">
+                <form action="/Task/EditTask_Action" method="post">
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <td><label for="Name">Name</label></td>
+                            <td><input type="text" name="Name" required value="@TempData["Name"]" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Description">Description</label></td>
+                            <td><input name="Description" required value="@TempData["Description"]" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Deadline">Deadline</label></td>
+                            <td><input type="datetime-local" name="Deadline" required style="margin-left:3.5rem;" /></td>
+                            <td><input type="text" name="Status" required value="@TempData["Status"]" hidden /></td>
+                            <td><input type="number" name="UserID" value="@TempData["UserID"]" hidden /></td>
+                            <td><input type="number" name="TaskID" value="@TempData["TaskID"]" hidden /></td>
+                        </tr>
+
+                    </table>
+                    @Html.AntiForgeryToken()
+                    <div class="flex-column left-content">
+                        <button type="submit" class="btn btn-outline-light btn-lg" name="submitBtn">Update Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
